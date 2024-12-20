@@ -86,32 +86,47 @@ partTime_hour = int(input("Enter your part time hours :"))
 
 employee = EmployeeWageComputation(name,wage_per_hour,full_day_hour,partTime_hour)
 
+first_execution = True
 
-print("Enter 1 for checking status")
-print("Enter 2 for checking the wage")
-print("Enter 3 for checking the dailyWage + partTimeWage")
-print("Enter 4 for checking the monthlyWage")
-print("Enter 5 for checking the total working hours wage")
+while True:
+        if not first_execution:
+            print("************************ Choose Repeat for checking it again ************************")
+            print("************************ Press enter to exit ************************")
 
-Choice = int(input("Enter your choice :"))
+            Choose = input("Enter your choice : ")
 
-match Choice:
-    case 1:
-        employee.check_status()
-    
-    case 2:
-        employee.daily_wage()
-    
-    case 3:
-        amount = employee.daily_wage()
-        employee.Add_partTime_wage(amount)
+            if(Choose != 'Repeat'):
+                break
 
-    case 4:
-        employee.calculate_monthly_wage()
+        first_execution = False
 
-    case 5:
-        your_total_working_hour = int(input("Enter your total working hour in a month :"))
-        employee.working_hour_reached(your_total_working_hour)
-    
-    case _:
-        print("Invalid choice!!!")
+        print("Enter 1 for checking status")
+        print("Enter 2 for checking the wage")
+        print("Enter 3 for checking the dailyWage + partTimeWage")
+        print("Enter 4 for checking the monthlyWage")
+        print("Enter 5 for checking the total working hours wage")
+
+        Choice = int(input("Enter your choice :"))
+
+
+        match Choice:
+            case 1:
+                employee.check_status()
+
+            case 2:
+                employee.daily_wage()
+
+            case 3:
+                amount = employee.daily_wage()
+                employee.Add_partTime_wage(amount)
+
+            case 4:
+                employee.calculate_monthly_wage()
+
+            case 5:
+                your_total_working_hour = int(input("Enter your total working hour in a month :"))
+                employee.working_hour_reached(your_total_working_hour)
+
+            case _:
+                print("Invalid choice!!!")
+        
